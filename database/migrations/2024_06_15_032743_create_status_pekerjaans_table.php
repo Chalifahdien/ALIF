@@ -16,10 +16,11 @@ return new class extends Migration {
 
         // Insert initial data
         DB::table('status_pekerjaan')->insert([
-            ['nama_status' => 'Menunggu'],
-            ['nama_status' => 'Sedang Diproses'],
-            ['nama_status' => 'Selesai'],
-            ['nama_status' => 'Dibatalkan'],
+            ['nama_status' => 'Menunggu'],        //1
+            ['nama_status' => 'Sedang Diproses'], //2
+            ['nama_status' => 'Tersedia'],        //3
+            ['nama_status' => 'Selesai'],         //4
+            ['nama_status' => 'Dibatalkan']       //5  
         ]);
     }
 

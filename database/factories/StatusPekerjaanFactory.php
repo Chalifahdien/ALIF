@@ -20,7 +20,7 @@ class StatusPekerjaanFactory extends Factory
     public function definition()
     {
         return [
-            'nama_status' => $this->faker->randomElement(['Menunggu', 'Sedang Diproses', 'Selesai', 'Dibatalkan']),
+            'nama_status' => $this->faker->randomElement(['Menunggu', 'Sedang Diproses', 'Tersedia' ,'Selesai', 'Dibatalkan']),
         ];
     }
 }

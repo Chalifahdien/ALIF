@@ -23,7 +23,7 @@ class PekerjaanFactory extends Factory
     public function definition()
     {
         return [
-            'id_pengguna' => User::inRandomOrder()->first()->id_pengguna,
+            'id_pengguna' => User::where('id_peran', '!=', 1)->inRandomOrder()->first()->id_pengguna,
             'id_pengambil' => null,
             'judul' => $this->faker->sentence(),
             'deskripsi' => $this->faker->paragraph(),

@@ -17,25 +17,34 @@
                     </thead>
                     <tbody>
                         @foreach ($pekerjaans as $pekerjaan)
-                            @if ($pekerjaan['id_status'] == 2)
+                            @if ($pekerjaan['id_status'] == 3)
                                 <tr>
                                     <td>
-                                        <div class="card card-header-actions">
-                                            <div class="card-header py-3">
-                                                <span class="m-0 font-weight-bold text-primary">
-                                                    {{ $pekerjaan['judul'] }}
-                                                </span> | <a href="#">By {{ $pekerjaan->pengguna->nama_lengkap }}</a>
+                                        <div class="card shadow mb-4 ">
+                                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                <div>
+                                                    <span class="m-0 font-weight-bold text-primary">
+                                                        {{ $pekerjaan['judul'] }}
+                                                    </span> |
+                                                    <a href="/pekerjaan/{{ $pekerjaan->pengguna->id_pengguna }}">By
+                                                        {{ $pekerjaan->pengguna->nama_lengkap }}
+                                                    </a>
+                                                </div>
+                                                <small class="text-body-secondary">
+                                                    Upload at : {{ $pekerjaan->created_at->diffForHumans() }}
+                                                </small>
                                             </div>
                                             <div class="card-body">
-                                                {{ $pekerjaan['deskripsi'] }}
-                                                <p class="card-text">
-                                                    {{ $pekerjaan['kategori'] }}
-                                                </p>
+                                                <p>{{ $pekerjaan['deskripsi'] }}</p>
+                                                <div>
+                                                    Kategori : <span class="badge badge-warning">{{ $pekerjaan['kategori'] }}</span>
+                                                </div>
                                                 <p class="card-text">
                                                     <small class="text-body-secondary">
-                                                        Tenggat Waktu : {{ $pekerjaan['tenggat_waktu'] }}
+                                                        Tenggat Waktu Pekerjaan : {{ $pekerjaan['tenggat_waktu'] }}
                                                     </small>
                                                 </p>
+                                                <a href="/detail/{{ $pekerjaan['id_pekerjaan'] }}" class="btn btn-primary">Detail</a>
                                             </div>
                                         </div>
                                     </td>

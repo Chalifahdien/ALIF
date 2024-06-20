@@ -1,9 +1,8 @@
 <x-layout-admin>
     <x-slot:tittle>{{ $tittle }}</x-slot:tittle>
-
     <!-- Page Heading -->
-
-        <h1 class="h3 mb-2 text-gray-800">Riwayat Pekerjaan</h1>
+    <h1 class="h3 mb-2 text-gray-800">Pekerjaan dari {{ $nama }}</h1>
+    <hr>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -18,7 +17,7 @@
                     </thead>
                     <tbody>
                         @foreach ($pekerjaans as $pekerjaan)
-                            @if ($pekerjaan['id_status'] == 4)
+
                                 <tr>
                                     <td>
                                         <div class="card shadow mb-4 ">
@@ -45,17 +44,16 @@
                                                         Tenggat Waktu Pekerjaan : {{ $pekerjaan['tenggat_waktu'] }}
                                                     </small>
                                                 </p>
-                                                <a href="/detail/{{ $pekerjaan['id_pekerjaan'] }}" class="btn btn-primary">Detail</a>
+                                                <a href="/detail/{{ $pekerjaan['id_pengguna'] }}" class="btn btn-primary">Detail</a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                            @endif
+
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </x-layout-admin>

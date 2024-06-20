@@ -30,6 +30,11 @@ class User extends Authenticatable
         return $this->hasMany(Pekerjaan::class, 'id_pengguna');
     }
 
+    public function pekerjaanAktif()
+    {
+        return $this->hasOne(Pekerjaan::class, 'id_pengambil')->where('is_active', true);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

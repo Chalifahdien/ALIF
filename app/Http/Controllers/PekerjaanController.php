@@ -20,7 +20,6 @@ class PekerjaanController extends Controller
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
@@ -30,20 +29,18 @@ class PekerjaanController extends Controller
         ]);
 
         $validatedData['id_status'] = 1;
-        $validatedData['id_pengguna'] = Auth::id();
+        $validatedData['id_pengguna'] = auth()->user()->id_pengguna;
 
         if ($request->hasFile('lampiran')) {
             $file = $request->file('lampiran');
-            $filePath = $file->store('lampiran', 'public'); // Menyimpan file ke direktori 'lampiran' di penyimpanan publik
-            $validatedData['lampiran'] = $filePath;
+            $filePath = $file->store('lampiran', 'public'); 
+            $validatedData['lampiran'] = $filePath; 
         }
 
         Pekerjaan::create($validatedData);
 
-        return redirect('/ajukan')->with(
-            'success',
-            'Pekerjaan berhasil diajukan!'
-        );
+        return redirect('/ajukan')->with('success', 'Pekerjaan berhasil diajukan!');
     }
+
 
 }
